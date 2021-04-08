@@ -38,5 +38,8 @@ export const initProgress = (parent: HTMLDivElement) => {
 }
 
 export const setElementTheme = (elem: HTMLElement, theme: SlideTheme) => {
+    const themeSecondary : string = (theme === 'light') ? 'theme_dark' : 'theme_light';
+    elem.classList.remove(themeSecondary);
+    // console.log([].slice.call(elem.classList))
     elem.classList.add(`theme_${theme}`);
 }
