@@ -20,4 +20,5 @@ export type Action =
     | ReturnType<typeof actionRestart> 
     | ReturnType<typeof actionMessage> 
     | ReturnType<typeof actionSetTheme> 
+    | ReturnType<typeof actionUpdate> 
     | ReturnType<typeof actionTimer>;
