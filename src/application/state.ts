@@ -5,8 +5,9 @@ import { createEffects } from './effects';
 import { data } from './data';
 import { Slide, State } from './types';
 
+// !NB дефолтный класс темы должен так же совпадать в frame.html
 const DEFAULT_STATE: State = {
-    theme: 'light',
+    theme: 'dark',
     index: 0,
     progress: 0,
     pause: false,
