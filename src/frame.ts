@@ -27,12 +27,17 @@ function receiveMessage({ data }: MessageEvent<XMessage>) {
 function onDocumentClick(e: MouseEvent) {
     if (e.target instanceof HTMLElement) {
         let target = e.target;
-        while(target && !target.dataset.action) {
-            target = target.parentElement;
+        // while(target && !target.dataset.action) {
+        //     // если это не кнопка с data-action - всплытие к родителю - он становится target
+        //     // но у html-элемента нет родителя (он = null)
+        //     target = target.parentElement;
+        // }
+        if (!target.dataset.action) {
+            return;
         }
 
-            const { action, params } = target.dataset;
-            sendMessage(messageAction(action, params));
+        const { action, params } = target.dataset;
+        sendMessage(messageAction(action, params));
     }
 }
 
