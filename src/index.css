@@ -38,9 +38,11 @@ body {
 }
 
 .slide-progress-value {
-    height: 4;
+    width: 0%;
+    height: 4px;
     background-color: #F4B000;
-    transition: transform 0.1s linear;
+    /*transition: transform 0.1s linear;*/
+    transition-duration: 0.1s;
     transform-origin: left top;
 }
 
@@ -69,11 +71,11 @@ body {
     transform: rotate(180deg);
 }
 
-@media (max-height: 750px) { 
+/*@media (max-height: 750px) { 
     .prev {
         display: none;
     }
-}
+}*/
 
 .theme_light .button {
     color: #BFBFBF;

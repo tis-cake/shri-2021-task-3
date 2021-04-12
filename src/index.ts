@@ -9,7 +9,7 @@ import {
 } from './application/actions';
 import { createState } from './application/state';
 import { createCurrentDataSelector, createCurrentIndexSelector, createProgressSelector, createThemeSelector } from './application/selectors';
-import { initIframe, initProgress, sendMessage, setElementTheme, setScale } from './application/view';
+import { initIframe, initProgress, sendMessage, setElementTheme, setWidth } from './application/view';
 
 import './index.css';
 
@@ -33,12 +33,14 @@ const progress = document.querySelector<HTMLDivElement>('.progress-container');
 const bars = stories.map(() => initProgress(progress));
 
 createProgressSelector(state$)
-    .subscribe(({ index, value }) => setScale(bars[index], value));
+    // .subscribe(({ index, value }) => setScale(bars[index], value));
+    .subscribe(({ index, value }) => setWidth(bars[index], value));
 
 createCurrentIndexSelector(state$)
     .subscribe(index => {
         player.style.transform = `translateX(-${index * 100}%)`;
-        bars.forEach((el, i) => setScale(el, i < index ? 1 : 0));
+        // bars.forEach((el, i) => setScale(el, i < index ? 1 : 0));
+        bars.forEach((el, i) => setWidth(el, i < index ? 100 : 0));
     });
 
 createCurrentDataSelector(state$)
@@ -55,5 +57,5 @@ createThemeSelector(state$)
 document.querySelector<HTMLDivElement>('.set-light').addEventListener('click', () => dispatch(actionSetTheme('light')));
 document.querySelector<HTMLDivElement>('.set-dark').addEventListener('click', () => dispatch(actionSetTheme('dark')));
 document.querySelector<HTMLDivElement>('.prev').addEventListener('click', () => dispatch(actionPrev()));
-document.querySelector<HTMLDivElement>('.next').addEventListener('click', () => dispatch(actionPrev()));
+document.querySelector<HTMLDivElement>('.next').addEventListener('click', () => dispatch(actionNext()));
 document.querySelector<HTMLDivElement>('.restart').addEventListener('click', () => dispatch(actionRestart()));

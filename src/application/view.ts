@@ -1,8 +1,12 @@
 import { XMessage } from '../messages';
 import { SlideTheme } from './types';
 
-export const setScale = (el: HTMLDivElement, value: number) => {
-    el.style.transform = `scaleX(${value.toFixed(5)})`;
+// export const setScale = (el: HTMLDivElement, value: number) => {
+//     el.style.transform = `scaleX(${value.toFixed(5)})`;
+// }
+
+export const setWidth = (el: HTMLDivElement, value: number) => {
+    el.style.width = `${value * 100}%`;
 }
 
 export const sendMessage = (iframe: HTMLIFrameElement, msg: XMessage) => {
@@ -40,6 +44,5 @@ export const initProgress = (parent: HTMLDivElement) => {
 export const setElementTheme = (elem: HTMLElement, theme: SlideTheme) => {
     const themeSecondary : string = (theme === 'light') ? 'theme_dark' : 'theme_light';
     elem.classList.remove(themeSecondary);
-    // console.log([].slice.call(elem.classList))
     elem.classList.add(`theme_${theme}`);
 }
